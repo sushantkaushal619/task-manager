@@ -100,7 +100,7 @@ const upload= multer({
         }
   })
 router.post('/users/me/avatar',auth,upload.single('avatar'),async (req,res)=>{
-    req.user.avatar= req.file.buffer// with out sharp
+   // req.user.avatar= req.file.buffer// with out sharp
 
     const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer() //using sharp
     req.user.avatar = buffer // 105,106 using sharp
